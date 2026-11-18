@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="t d" font-family="Helvetica, Arial, sans-serif">
+  <title id="t">System architecture</title>
+  <desc id="d">Browser to Next.js and FastAPI. FastAPI writes to Postgres including an outbox. A relay moves outbox rows to Redis, and workers consume them to match items, send email and scrub photos. Photos go directly to S3-compatible storage.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4b5873"/></marker>
+  </defs>
+  <rect width="1200" height="520" fill="#edf0f4"/>
+  <text x="40" y="50" font-size="26" font-weight="800" fill="#172033">System architecture</text>
+  <g font-size="15" fill="#172033" text-anchor="middle">
+    <rect x="40" y="150" width="170" height="90" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="125" y="188" font-weight="700">Browser</text><text x="125" y="212" fill="#4b5873">Students and staff</text>
+
+    <rect x="270" y="150" width="190" height="90" rx="12" fill="#e4e9fb" stroke="#2b4acb" stroke-width="2"/>
+    <text x="365" y="188" font-weight="700">Next.js</text><text x="365" y="212" fill="#4b5873">Pages, /api proxy</text>
+
+    <rect x="520" y="110" width="250" height="170" rx="12" fill="#e4e9fb" stroke="#2b4acb" stroke-width="2"/>
+    <text x="645" y="140" font-weight="700">FastAPI (modular monolith)</text>
+    <text x="645" y="168" fill="#4b5873">items · lost_reports · matching</text>
+    <text x="645" y="190" fill="#4b5873">claims · assistant · desk</text>
+    <text x="645" y="212" fill="#4b5873">notifications · auth</text>
+    <text x="645" y="250" fill="#172033" font-size="13">domain/ = pure rules, no I/O</text>
+
+    <rect x="850" y="90" width="300" height="130" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="1000" y="120" font-weight="700">PostgreSQL + pgvector</text>
+    <text x="1000" y="148" fill="#4b5873">Items, claims, watches, matches</text>
+    <text x="1000" y="170" fill="#4b5873">Append-only custody log</text>
+    <text x="1000" y="192" fill="#4b5873">Outbox table (same transaction)</text>
+
+    <rect x="850" y="260" width="300" height="70" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="1000" y="290" font-weight="700">Outbox relay</text>
+    <text x="1000" y="312" fill="#4b5873">Publishes rows, idempotent job ids</text>
+
+    <rect x="850" y="380" width="300" height="70" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="1000" y="410" font-weight="700">Redis</text>
+    <text x="1000" y="432" fill="#4b5873">Job queue, rate limits</text>
+
+    <rect x="520" y="380" width="250" height="90" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="645" y="410" font-weight="700">Workers (arq)</text>
+    <text x="645" y="432" fill="#4b5873">Match · embed · scrub photo</text>
+    <text x="645" y="452" fill="#4b5873">Notify · email · expiry cron</text>
+
+    <rect x="270" y="380" width="190" height="90" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="365" y="410" font-weight="700">S3 / R2 storage</text>
+    <text x="365" y="432" fill="#4b5873">Photos, presigned URLs</text>
+
+    <rect x="40" y="380" width="170" height="90" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="125" y="410" font-weight="700">SMTP</text>
+    <text x="125" y="432" fill="#4b5873">Codes, alerts</text>
+  </g>
+  <!-- optional LLM -->
+  <rect x="480" y="40" width="330" height="44" rx="22" fill="#fff" stroke="#2b4acb" stroke-width="3" stroke-dasharray="8 6"/>
+  <text x="645" y="68" font-size="15" font-weight="700" fill="#172033" text-anchor="middle">Optional LLM (read text, word reply)</text>
+  <g stroke="#4b5873" stroke-width="2.5" marker-end="url(#a)" fill="none">
+    <path d="M210 195 H264"/><path d="M460 195 H514"/><path d="M770 160 H844"/>
+    <path d="M1000 220 V254"/><path d="M1000 330 V374"/><path d="M850 415 H776"/>
+    <path d="M520 425 H466"/><path d="M645 470 V500 H125 V476"/>
+    <path d="M365 240 V374" stroke-dasharray="6 5"/>
+  </g>
+  <path d="M645 90 V104" stroke="#2b4acb" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a)" fill="none"/>
+  <text x="372" y="322" font-size="13" fill="#4b5873">direct upload</text>
+  <text x="385" y="494" font-size="13" fill="#4b5873" text-anchor="middle">email</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="t d" font-family="Helvetica, Arial, sans-serif">
+  <title id="t">Matching pipeline</title>
+  <desc id="d">An owner's description is read into fields, matched in code through candidates, vetoes, weighted scoring and caps, then shown or alerted by threshold. The LLM is used only to read the description and word the reply.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4b5873"/></marker>
+  </defs>
+  <rect width="1200" height="430" fill="#edf0f4"/>
+  <text x="40" y="52" font-size="26" font-weight="800" fill="#172033">How a match is decided</text>
+  <text x="40" y="80" font-size="16" fill="#4b5873">Dashed blue = optional LLM step. Solid = plain code that is unit-tested and evaluated.</text>
+
+  <!-- row 1 -->
+  <g font-size="15" fill="#172033">
+    <rect x="40" y="120" width="190" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="135" y="152" text-anchor="middle" font-weight="700">1. Owner describes</text>
+    <text x="135" y="176" text-anchor="middle" fill="#4b5873">"blk sony headphones</text>
+    <text x="135" y="196" text-anchor="middle" fill="#4b5873">near lib, yesterday"</text>
+
+    <rect x="290" y="120" width="190" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="385" y="152" text-anchor="middle" font-weight="700">2. Read into fields</text>
+    <text x="385" y="176" text-anchor="middle" fill="#4b5873">Rules first, then LLM</text>
+    <text x="385" y="196" text-anchor="middle" fill="#4b5873">fills the gaps</text>
+    <rect x="290" y="120" width="190" height="96" rx="12" fill="none" stroke="#2b4acb" stroke-width="3" stroke-dasharray="8 6"/>
+
+    <rect x="540" y="120" width="190" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="635" y="152" text-anchor="middle" font-weight="700">3. Find candidates</text>
+    <text x="635" y="176" text-anchor="middle" fill="#4b5873">Vector search (HNSW)</text>
+    <text x="635" y="196" text-anchor="middle" fill="#4b5873">+ exact item type</text>
+
+    <rect x="790" y="120" width="190" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="885" y="152" text-anchor="middle" font-weight="700">4. Hard vetoes</text>
+    <text x="885" y="176" text-anchor="middle" fill="#4b5873">Found before lost,</text>
+    <text x="885" y="196" text-anchor="middle" fill="#4b5873">wrong category, unavailable</text>
+  </g>
+  <g stroke="#4b5873" stroke-width="2.5" marker-end="url(#a)" fill="none">
+    <path d="M230 168 H284"/><path d="M480 168 H534"/><path d="M730 168 H784"/>
+    <path d="M885 216 V250 H135 V284"/>
+  </g>
+
+  <!-- row 2 -->
+  <g font-size="15" fill="#172033">
+    <rect x="40" y="290" width="330" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="205" y="320" text-anchor="middle" font-weight="700">5. Weighted score (0 to 1)</text>
+    <text x="205" y="344" text-anchor="middle" fill="#4b5873">text .35 · type .20 · colour .15</text>
+    <text x="205" y="364" text-anchor="middle" fill="#4b5873">place .12 · brand .10 · time .08</text>
+
+    <rect x="430" y="290" width="240" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="550" y="320" text-anchor="middle" font-weight="700">6. Caps</text>
+    <text x="550" y="344" text-anchor="middle" fill="#4b5873">Wrong type max .35</text>
+    <text x="550" y="364" text-anchor="middle" fill="#4b5873">Colour conflict max .55</text>
+
+    <rect x="730" y="290" width="200" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="830" y="320" text-anchor="middle" font-weight="700">7. Thresholds</text>
+    <text x="830" y="344" text-anchor="middle" fill="#4b5873">.45 show to owner</text>
+    <text x="830" y="364" text-anchor="middle" fill="#4b5873">.70 alert and email</text>
+
+    <rect x="990" y="290" width="170" height="96" rx="12" fill="#fff" stroke="#b7bfcc" stroke-width="2"/>
+    <text x="1075" y="320" text-anchor="middle" font-weight="700">8. Reply</text>
+    <text x="1075" y="344" text-anchor="middle" fill="#4b5873">Worded by LLM,</text>
+    <text x="1075" y="364" text-anchor="middle" fill="#4b5873">or a template</text>
+    <rect x="990" y="290" width="170" height="96" rx="12" fill="none" stroke="#2b4acb" stroke-width="3" stroke-dasharray="8 6"/>
+  </g>
+  <g stroke="#4b5873" stroke-width="2.5" marker-end="url(#a)" fill="none">
+    <path d="M370 338 H424"/><path d="M670 338 H724"/><path d="M930 338 H984"/>
+  </g>
+</svg>

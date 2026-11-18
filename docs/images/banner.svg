@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="t d">
+  <title id="t">Campus Lost &amp; Found</title>
+  <desc id="d">Lost-and-found platform with matching, claims and custody tracking.</desc>
+  <rect width="1200" height="300" fill="#172033"/>
+  <rect x="0" y="0" width="1200" height="300" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b4acb" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#172033" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(90 62) rotate(-6 60 90)">
+    <path d="M60 0 L120 40 L120 190 L0 190 L0 40 Z" fill="#ebd7a7" stroke="#4a3a14" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="60" cy="40" r="11" fill="#172033" stroke="#4a3a14" stroke-width="4"/>
+    <rect x="22" y="80" width="76" height="8" rx="4" fill="#4a3a14" opacity="0.8"/>
+    <rect x="22" y="102" width="56" height="8" rx="4" fill="#4a3a14" opacity="0.5"/>
+    <rect x="22" y="124" width="66" height="8" rx="4" fill="#4a3a14" opacity="0.5"/>
+    <rect x="22" y="152" width="40" height="18" rx="9" fill="#2b4acb"/>
+  </g>
+  <text x="270" y="130" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="800" fill="#ffffff">Campus Lost &amp; Found</text>
+  <text x="272" y="178" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#c8d2f5">Report it. Describe it. Get it back.</text>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="600">
+    <rect x="272" y="212" width="104" height="36" rx="18" fill="#ffffff" fill-opacity="0.12"/><text x="324" y="236" text-anchor="middle" fill="#ffffff">FastAPI</text>
+    <rect x="388" y="212" width="200" height="36" rx="18" fill="#ffffff" fill-opacity="0.12"/><text x="488" y="236" text-anchor="middle" fill="#ffffff">Postgres + pgvector</text>
+    <rect x="600" y="212" width="96" height="36" rx="18" fill="#ffffff" fill-opacity="0.12"/><text x="648" y="236" text-anchor="middle" fill="#ffffff">Redis</text>
+    <rect x="708" y="212" width="100" height="36" rx="18" fill="#ffffff" fill-opacity="0.12"/><text x="758" y="236" text-anchor="middle" fill="#ffffff">Next.js</text>
+    <rect x="820" y="212" width="152" height="36" rx="18" fill="#ffffff" fill-opacity="0.12"/><text x="896" y="236" text-anchor="middle" fill="#ffffff">Optional LLM</text>
+  </g>
+</svg>
